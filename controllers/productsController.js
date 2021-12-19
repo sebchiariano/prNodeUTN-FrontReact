@@ -8,7 +8,8 @@ module.exports={
     {
         try{
 
-            const documents = await productsModel.find();
+            const documents = await productsModel.find({});
+            console.log(JSON.parse(JSON.stringify(documents)));
             res.json(documents);
 
         }catch(e){
@@ -54,12 +55,12 @@ module.exports={
         try{
 
             const produc = new productsModel ({
-                nombre: req.body.nombre,
-                precio: req.body.precio,
-                descripcion: req.body.descripcion,
-                codigo:req.body.codigo,
-                categoria:req.body.categoria,
-                destacado:req.body.destacado,
+                title: req.body.title,
+                price: req.body.price,
+                description: req.body.description,
+                warranty:req.body.warranty,
+                available_quantity:req.body.available_quantity,
+                pictures:req.body.pictures,
             })
      
             const document = await produc.save();

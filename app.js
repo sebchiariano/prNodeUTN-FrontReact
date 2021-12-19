@@ -14,6 +14,17 @@ var productsRouter = require('./routes/products');
 
 var app = express();
 
+//CORS
+var cors = require('cors')
+
+var corsOptions = {
+  origin: 'http://localhost:3001',
+  optionsSuccessStatus: 200, // For legacy browser support
+  methods: "GET, PUT"
+}
+
+app.use(cors(corsOptions));
+
 
 app.set('secretKey', "123456*s")
 // view engine setup
@@ -34,6 +45,8 @@ app.use('/products', productsRouter);
 app.use(function(req, res, next) {
   next(createError(404));
 });
+
+
 
 
 //Validacion usuario logueado token

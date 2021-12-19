@@ -4,6 +4,7 @@ var router = express.Router();
 const productController = require("../controllers/productsController")
 
 // pagina HOME
+router.get('/', productController.getAll);
 router.get('/destacados', productController.getDestacados);
 
 // pagina Detalle Producto
