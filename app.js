@@ -23,7 +23,7 @@ var corsOptions = {
   methods: "GET, PUT"
 }
 
-app.use(cors(corsOptions));
+app.use(cors(/*corsOptions*/));
 
 
 app.set('secretKey', "123456*s")

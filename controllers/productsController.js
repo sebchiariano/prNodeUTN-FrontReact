@@ -8,7 +8,8 @@ module.exports={
     {
         try{
 
-            const documents = await productsModel.find({});
+
+            const documents = await productsModel.find();
             console.log(JSON.parse(JSON.stringify(documents)));
             res.json(documents);
 
@@ -52,6 +53,7 @@ module.exports={
 
     create: async function(req, res, next)
     {
+        console.log(req.body);
         try{
 
             const produc = new productsModel ({
@@ -139,5 +141,19 @@ module.exports={
             console.log(e);
 
         }
-    }
+    },
+
+    actualizarCantidad: async function(req, res, next)
+    {
+        try{
+            
+            const document = await productsModel.updateOne({ _id:req.params.id}, { $set: { available_quantity: req.body.available_quantity }}); 
+            res.json(document);   
+
+        }catch(e){
+            
+            console.log(e);
+
+        }
+    },
 }

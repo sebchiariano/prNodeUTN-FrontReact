@@ -14,9 +14,11 @@ router.get('/:id', productController.getById);
 router.post('/',  productController.create);
 
 // pagina Modificacion Producto
+router.put('/actualizarCantidad/:id', productController.actualizarCantidad);
 router.put('/ponerDestacado/:id', productController.ponerDestacado);
 router.put('/quitarDestacado/:id', productController.quitarDestacado);
-router.put('/:id', (req,res,next)=>{req.app.validateUser(req.res.next)}, productController.update);
-router.delete('/:id', (req,res,next)=>{req.app.validateUser(req.res.next)}, productController.delete);
+//router.put('/:id', (req,res,next)=>{req.app.validateUser(req.res.next)}, productController.update);
+router.put('/:id', productController.update);
+router.delete('/:id', productController.delete);
 
 module.exports = router;
